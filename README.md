@@ -16,6 +16,7 @@ NOTE: The frontend currently assumes that the api is hosted at the same origin.
 cd frontend
 npm install
 npm run build
+cd ..
 ```
 
 ### Run the server
