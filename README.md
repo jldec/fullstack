@@ -18,6 +18,10 @@ cd ..
 The frontend calls the server api when a button is clicked, and renders the response.
 
 ```sh
+# Configure backend URL to target from frontend dev server
+# If this is unset, the same origin as the frontend dev server will be used.
+export GPFS_ENDPOINT=http://localhost:3001
+
 cd frontend
 npm run dev
 ```
@@ -27,6 +31,7 @@ Builds static site into the `frontend/build` directory.
 
 ```sh
 # Configure backend URL to target from statically compiled frontend
+# If this is unset, the same origin as the static-build server will be used.
 export GPFS_ENDPOINT=http://localhost:3001
 
 cd frontend
