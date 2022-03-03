@@ -20,7 +20,8 @@ The frontend calls the server api when a button is clicked, and renders the resp
 ```sh
 # Configure backend URL to target from frontend dev server
 # If this is unset, the same origin as the frontend dev server will be used.
-export GPFS_ENDPOINT=http://localhost:3001
+export FULLSTACK_FRONTEND=http://localhost:3000
+export FULLSTACK_BACKEND=http://localhost:3001
 
 cd frontend
 npm run dev
@@ -32,7 +33,8 @@ Builds static site into the `frontend/build` directory.
 ```sh
 # Configure backend URL to target from statically compiled frontend
 # If this is unset, the same origin as the static-build server will be used.
-export GPFS_ENDPOINT=http://localhost:3001
+export FULLSTACK_FRONTEND=http://localhost:3000
+export FULLSTACK_BACKEND=http://localhost:3001
 
 cd frontend
 npm run build
@@ -45,6 +47,11 @@ The server responds to `/api/counter` with JSON of the form:
 The server also hosts the frontend static build at the server root `/`.
 
 ```sh
+# Configure server to accept CORS credentials from frontend
+# If this is unset, the server will accept all origins.
+export FULLSTACK_FRONTEND=http://localhost:3000
+export FULLSTACK_BACKEND=http://localhost:3001
+
 cd backend
 npm start
 ```
