@@ -1,12 +1,13 @@
-/** @type {import('@sveltejs/kit').Config} */
-
 import adapter from '@sveltejs/adapter-static';
 
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		target: '#svelte',
-		adapter: adapter({}) // output pages into `build`
-	}
+		adapter: adapter(),
+		vite: {
+			envPrefix: "GPFS_"
+		}
+	},
 };
 
 export default config;

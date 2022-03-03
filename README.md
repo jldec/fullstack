@@ -1,29 +1,45 @@
 # Fastify + Svelte
 
-Experimental app using [Fastify](https://www.fastify.io/) for server, and [SvelteKit](https://kit.svelte.dev/) for frontend.
+Experimental backend server using [Fastify](https://www.fastify.io/), and frontend using [SvelteKit](https://kit.svelte.dev/).
 
-The server responds to `/api/counter` with JSON of the form:  
-`{ "hello": "world", "count": count++ }`
+### Install dependencies
 
-The frontend calls the api when a button is clicked, and renders the response.
-
-### First build the frontend
-
-Build static site into the `frontend/build` directory.  
-NOTE: The frontend currently assumes that the api is hosted at the same origin.
-
-```
+```sh
 cd frontend
 npm install
-npm run build
+cd ..
+
+cd backend
+npm install
 cd ..
 ```
 
-### Run the server
+### Run frontend dev server
+The frontend calls the server api when a button is clicked, and renders the response.
 
-The server hosts the frontend static site at `/`.
-
+```sh
+cd frontend
+npm run dev
 ```
-npm install
+
+### Build frontend
+Builds static site into the `frontend/build` directory.
+
+```sh
+# Configure backend URL to target from statically compiled frontend
+export GPFS_ENDPOINT=http://localhost:3001
+
+cd frontend
+npm run build
+```
+
+### Run server
+The server responds to `/api/counter` with JSON of the form:  
+`{ "hello": "world", "count": count++ }`
+
+The server also hosts the frontend static build at the server root `/`.
+
+```sh
+cd backend
 npm start
 ```

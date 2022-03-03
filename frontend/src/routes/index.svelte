@@ -1,8 +1,9 @@
 <script>
 let msg = ""
+let api = (import.meta.env.GPFS_ENDPOINT || '') + '/api/counter'
 
 function doFetch(event) {
-  fetch('/api/counter')
+  fetch(api)
   .then(response => {
     if (!response.ok) {
       throw new Error(response.status);
@@ -19,9 +20,16 @@ function doFetch(event) {
 </script>
 
 <style>
+button { width: 10em; padding: 1em; }
+.notes { font-style: italic; margin-top: 1em;}
 </style>
 
 <h1>Frontend</h1>
+
 <h2>Hello {msg}</h2>
 
-<button on:click={doFetch}>Call the function</button>
+<button on:click={doFetch}>Call Backend</button>
+
+<div class="notes">
+{api}
+</div>

@@ -1,10 +1,16 @@
 tasks:
-  - init: |
+  - name: frontend
+    init: |
       cd frontend
       npm install
       npm run build
-      cd ..
-      npm install
-
     command: |
-      npm run start
+      export GPFS_ENDPOINT=`gp url 3001`
+      npm run dev
+
+  - name: backend
+    init: |
+      cd backend
+      npm install
+    command: |
+      npm start
