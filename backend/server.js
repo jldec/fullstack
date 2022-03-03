@@ -4,11 +4,11 @@ import Fastify from 'fastify'
 import fastifyStatic from 'fastify-static'
 import fastifyCors from 'fastify-cors'
 
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'url'
 import { join, dirname } from 'path'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const fastify = Fastify({
   logger: true
@@ -18,8 +18,13 @@ fastify.register(fastifyStatic, {
   root: join(__dirname, '../frontend/build'),
 })
 
+// allow CORS credenditals from frontend
+const frontend = process.env.FULLSTACK_FRONTEND || "*"
+fastify.log.info({frontend})
+
 fastify.register(fastifyCors, {
-  origin: "*"
+  origin: frontend,
+  credentials: true
 })
 
 let count = 0
@@ -34,5 +39,4 @@ fastify.listen(3001, function (err, address) {
     fastify.log.error(err)
     process.exit(1)
   }
-  // fastify.log.info(`listening on ${address}`)
 })

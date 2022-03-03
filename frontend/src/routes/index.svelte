@@ -1,9 +1,9 @@
 <script>
 let msg = ""
-let api = (import.meta.env.GPFS_ENDPOINT || '') + '/api/counter'
+let api = (import.meta.env.FULLSTACK_BACKEND || '') + '/api/counter'
 
 function doFetch(event) {
-  fetch(api)
+  fetch(api, {credentials: 'include'})
   .then(response => {
     if (!response.ok) {
       throw new Error(response.status);

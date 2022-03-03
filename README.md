@@ -48,3 +48,21 @@ The server also hosts the frontend static build at the server root `/`.
 cd backend
 npm start
 ```
+
+### Developing with Gitpod
+Cloning this repo and creating a Gitpod project will trigger automatic prebuilds 
+when changes are committed to the repo.
+
+The Gitpod workspace is configured to `npm install` both frontend and backend during prebuilds,
+and run both a frontend dev server (on port 3000) and a backend Fastify server (on port 3001).
+
+In order for the website from the dev server to connect to the backend server from a browser
+session, the backend server needs to be exposed publicly, or configured for CORS credentials
+on the origin matching the frontend.
+
+Exposing Gitpod ports publicly can be accomplished via the VS Code UI inside a workspace,
+or by specifying the visiblity in .gitpod.yml.
+([docs](https://www.gitpod.io/docs/config-ports#configure-the-opening-behavior))
+
+Configuring the server and frontend for CORS is documented at https://www.gitpod.io/docs/config-ports#cors
+

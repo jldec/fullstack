@@ -5,7 +5,7 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		vite: {
-			envPrefix: "GPFS_"
+			envPrefix: "FULLSTACK_"
 		}
 	},
 };
