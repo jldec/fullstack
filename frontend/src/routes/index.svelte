@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
 let msg = ""
 let api = (import.meta.env.FULLSTACK_BACKEND || '') + '/api/counter'
 
@@ -6,7 +8,7 @@ function doFetch(event) {
   fetch(api, {credentials: 'include'})
   .then(response => {
     if (!response.ok) {
-      throw new Error(response.status);
+      throw new Error(`${response.status}`);
     }
     return response.json()
   })
@@ -20,8 +22,8 @@ function doFetch(event) {
 </script>
 
 <style>
-button { width: 10em; padding: 1em; }
-.notes { font-style: italic; margin-top: 1em;}
+button { width: 10em; padding: 1em; font-size: 1em; }
+.notes { font-style: italic; margin-top: 1em; }
 </style>
 
 <h1>Frontend</h1>
