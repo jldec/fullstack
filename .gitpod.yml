@@ -7,7 +7,6 @@ tasks:
       npm install
       npm run build
     command: |
-      export FULLSTACK_FRONTEND=`gp url 3000`
       export FULLSTACK_BACKEND=`gp url 3001`
       npm run dev
 
@@ -18,7 +17,6 @@ tasks:
       npm install
     command: |
       export FULLSTACK_FRONTEND=`gp url 3000`
-      export FULLSTACK_BACKEND=`gp url 3001`
       npm start
 
 vscode:
