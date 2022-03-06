@@ -1,37 +1,39 @@
 <script>
 // @ts-nocheck
+import { dev } from '$app/env'
 
-let msg = ""
-let api = (import.meta.env.FULLSTACK_BACKEND || '') + '/api/counter'
+let api = 'x'+(import.meta.env.FULLSTACK_BACKEND || '') + '/api/counter'
+let mode = dev ? 'dev server' : 'static build'
+let msg = "-"
 
-function doFetch(event) {
-  fetch(api, {credentials: 'include'})
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`${response.status}`);
+async function doFetch() {
+  try {
+    let resp = await fetch(api, {credentials: 'include'})
+    if (resp.ok) {
+      let data = await resp.json()
+      msg = `Hello ${data.hello} (${data.count})`
     }
-    return response.json()
-  })
-  .then(data => {
-    msg = data.hello + " (" + data.count + ")"
-  })
-  .catch((error) => {
-    msg = error
-  });
+    else {
+      msg = await resp.text()
+    }
+  }
+  catch(e) {
+    msg = `${e}`
+  }
 }
 </script>
 
-<style>
-button { width: 10em; padding: 1em; font-size: 1em; }
-.notes { font-style: italic; margin-top: 1em; }
-</style>
+<h1>Frontend ({mode})</h1>
 
-<h1>Frontend</h1>
-
-<h2>Hello {msg}</h2>
+<h2>{msg}</h2>
 
 <button on:click={doFetch}>Call Backend</button>
 
 <div class="notes">
-{api}
+API: {api}
 </div>
+
+<style>
+  button { width: 10em; padding: 1em; font-size: 1em; }
+  .notes { font-style: italic; margin-top: 1em; }
+</style>
