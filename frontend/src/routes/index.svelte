@@ -2,7 +2,7 @@
 // @ts-nocheck
 import { dev } from '$app/env'
 
-let api = 'x'+(import.meta.env.FULLSTACK_BACKEND || '') + '/api/counter'
+let api = (import.meta.env.FULLSTACK_BACKEND || '') + '/api/counter'
 let mode = dev ? 'dev server' : 'static build'
 let msg = "-"
 
