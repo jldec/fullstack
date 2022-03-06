@@ -2,6 +2,8 @@
 
 Experimental backend server using [Fastify](https://www.fastify.io/), and frontend using [SvelteKit](https://kit.svelte.dev/).
 
+This is the monorepo version of [fullstack-frontend](https://github.com/jldec/fullstack-frontend) and [fullstack-backend](https://github.com/jldec/fullstack-backend).
+
 ### Install dependencies
 
 ```sh
