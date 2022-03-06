@@ -7,7 +7,8 @@ const config = {
   kit: {
     adapter: adapter(),
     prerender: {
-      default: true
+      default: true,
+      onError: 'continue'
     },
     vite: {
       envPrefix: "FULLSTACK_",
