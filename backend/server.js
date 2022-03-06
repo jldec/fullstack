@@ -20,12 +20,12 @@ fastify.register(fastifyStatic, {
 
 // allow CORS credenditals from frontend
 const frontend = process.env.FULLSTACK_FRONTEND || "*"
-const credenditals = !!process.env.FULLSTACK_FRONTEND
+const credentials = !!process.env.FULLSTACK_FRONTEND
 fastify.log.info({frontend})
 
 fastify.register(fastifyCors, {
   origin: frontend,
-  credentials: credenditals
+  credentials: credentials
 })
 
 let count = 0
