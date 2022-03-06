@@ -14,7 +14,7 @@ async function doFetch() {
       msg = `Hello ${data.hello} (${data.count})`
     }
     else {
-      msg = await resp.text()
+      msg = `${resp.status} ${resp.statusText}`
     }
   }
   catch(e) {
@@ -29,11 +29,13 @@ async function doFetch() {
 
 <button on:click={doFetch}>Call Backend</button>
 
-<div class="notes">
-API: {api}
-</div>
+<footer>
+API: <a target="fullstack_api" href="{api}">{api}</a>
+</footer>
 
 <style>
   button { width: 10em; padding: 1em; font-size: 1em; }
-  .notes { font-style: italic; margin-top: 1em; }
+  footer { margin-top: 1em; }
+  a { color: rgb(0, 69, 134); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 </style>
