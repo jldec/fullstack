@@ -18,15 +18,14 @@ fastify.register(fastifyStatic, {
   root: join(__dirname, '../frontend/build'),
 })
 
-// allow CORS credenditals from frontend
-const frontend = process.env.FULLSTACK_FRONTEND || "*"
-const credentials = !!process.env.FULLSTACK_FRONTEND
-fastify.log.info({frontend})
-
-fastify.register(fastifyCors, {
-  origin: frontend,
-  credentials: credentials
-})
+// allow CORS credentials from frontend, if specified
+const corsOrigin = process.env.FULLSTACK_FRONTEND
+const corsOpts = { origin: corsOrigin || "*" }
+if (corsOrigin) {
+  corsOpts.credentials = true;
+}
+fastify.log.info(corsOpts)
+fastify.register(fastifyCors, corsOpts)
 
 let count = 0
 
